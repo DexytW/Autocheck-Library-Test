@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=68", "wheel"]
+requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -7,11 +7,3 @@ name = "autocheck"
 version = "0.1.0"
 description = "Auto-checking helpers for IDS tutorials"
 requires-python = ">=3.8"
-# If your checker actually imports these, keep them; otherwise you can remove this block.
-dependencies = ["pandas>=2.0", "altair>=5.0"]
-
-[tool.setuptools]
-package-dir = { "" = "src" }
-
-[tool.setuptools.packages.find]
-where = ["src"]
