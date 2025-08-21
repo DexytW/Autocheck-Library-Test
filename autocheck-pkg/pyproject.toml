@@ -1,0 +1,39 @@
+# 1) make the package skeleton
+mkdir -p autocheck-pkg/src/autocheck
+
+# 2) create pyproject.toml
+cat > autocheck-pkg/pyproject.toml <<'PYPROJECT'
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "autocheck"                 # import name will be 'autocheck'
+version = "0.1.0"
+description = "Auto-checking helpers for IDS tutorials"
+readme = "README.md"
+requires-python = ">=3.8"
+authors = [{ name = "CMU DIG" }]
+license = { text = "MIT" }
+# If your checker imports these, keep them; otherwise you can remove.
+dependencies = [
+  "pandas>=2.0",
+  "altair>=5.0"
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+PYPROJECT
+
+# 3) add a README (optional but recommended)
+cat > autocheck-pkg/README.md <<'README'
+# autocheck
+Auto-checking helpers for IDS tutorials. Installable directly from GitHub.
+README
+
+# 4) copy your existing checker into the package
+# (this is the file you already have in your repo)
+cp IDS-Interactive-Tutorial/Altair_Tutorial/autocheck.py autocheck-pkg/src/autocheck/__init__.py
